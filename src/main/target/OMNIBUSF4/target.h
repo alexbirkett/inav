@@ -36,7 +36,7 @@
 #define USBD_PRODUCT_STRING     "Omnibus F4"
 #endif
 
-#define LED0                    PB5
+#define LED0                    NONE
 
 #define BEEPER                  PB4
 #define BEEPER_INVERTED
@@ -157,8 +157,8 @@
 #define SERIAL_PORT_COUNT       5 //VCP, USART1, USART3, USART6, SOFTSERIAL1
 #else
 #define USE_SOFTSERIAL1
-#define SOFTSERIAL_1_RX_PIN     PC8
-#define SOFTSERIAL_1_TX_PIN     PC9
+#define SOFTSERIAL_1_RX_PIN     NONE
+#define SOFTSERIAL_1_TX_PIN     PB6
 
 #define SERIAL_PORT_COUNT       5 //VCP, USART1, USART3, USART6, SOFTSERIAL1
 #endif
@@ -227,19 +227,6 @@
 #define RSSI_ADC_CHANNEL                ADC_CHN_3
 
 #define SENSORS_SET (SENSOR_ACC|SENSOR_MAG|SENSOR_BARO)
-
-#define USE_LED_STRIP
-#if (defined(OMNIBUSF4PRO) || defined(OMNIBUSF4V3)) && !defined(OMNIBUSF4PRO_LEDSTRIPM5)
-#   define WS2811_PIN                      PB6
-#   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST0_HANDLER
-#   define WS2811_DMA_STREAM               DMA1_Stream0
-#   define WS2811_DMA_CHANNEL              DMA_Channel_2
-#else
-#   define WS2811_PIN                      PA1
-#   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST4_HANDLER
-#   define WS2811_DMA_STREAM               DMA1_Stream4
-#   define WS2811_DMA_CHANNEL              DMA_Channel_6
-#endif
 
 #define DEFAULT_RX_TYPE         RX_TYPE_PPM
 #define DISABLE_RX_PWM_FEATURE
