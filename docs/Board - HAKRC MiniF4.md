@@ -22,3 +22,7 @@ The board comes with the Betaflight OMNIBUSF4V3 target installed.
 SDA1 and LED are both connected to PIN PB7 and therefore can't be used at the same time.
 
 When connecting a magnetometer SDA2 / SCL2 should be used. 
+
+
+# Video review
+https://www.youtube.com/watch?v=5MJQpntX31k
