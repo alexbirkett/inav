@@ -17,24 +17,9 @@
 
 #pragma once
 
-#ifdef OMNIBUSF4PRO_LEDSTRIPM5
-#define OMNIBUSF4PRO
-#endif
-#ifdef OMNIBUSF4PRO
-#define TARGET_BOARD_IDENTIFIER "OBSD"
-#elif defined(OMNIBUSF4V3)
-#define TARGET_BOARD_IDENTIFIER "OB43"
-#elif defined(DYSF4PRO)
-#define TARGET_BOARD_IDENTIFIER "DYS4"
-#else
-#define TARGET_BOARD_IDENTIFIER "OBF4"
-#endif
 
-#if defined(DYSF4PRO)
-#define USBD_PRODUCT_STRING "DysF4Pro"
-#else
+#define TARGET_BOARD_IDENTIFIER "OB43"
 #define USBD_PRODUCT_STRING     "Omnibus F4"
-#endif
 
 #define LED0                    PB5
 
@@ -60,31 +45,22 @@
 #define MPU6000_CS_PIN          PA4
 #define MPU6000_SPI_BUS         BUS_SPI1
 
-#if defined(OMNIBUSF4PRO) || defined(OMNIBUSF4V3)
-  #define USE_GYRO_MPU6000
-  #define GYRO_MPU6000_ALIGN      CW270_DEG
+#define USE_GYRO_MPU6000
+#define GYRO_MPU6000_ALIGN      CW270_DEG
 
-  #define USE_ACC_MPU6000
-  #define ACC_MPU6000_ALIGN       CW270_DEG
-#else
-  #define USE_GYRO_MPU6000
-  #define GYRO_MPU6000_ALIGN      CW180_DEG
+#define USE_ACC_MPU6000
+#define ACC_MPU6000_ALIGN       CW270_DEG
 
-  #define USE_ACC_MPU6000
-  #define ACC_MPU6000_ALIGN       CW180_DEG
-#endif
 
 // Support for OMNIBUS F4 PRO CORNER - it has ICM20608 instead of MPU6000
-#if defined (OMNIBUSF4PRO) || defined(OMNIBUSF4V3) || defined(OMNIBUSF4PRO_LEDSTRIPM5)
-  #define MPU6500_CS_PIN          MPU6000_CS_PIN
-  #define MPU6500_SPI_BUS         MPU6000_SPI_BUS
+#define MPU6500_CS_PIN          MPU6000_CS_PIN
+#define MPU6500_SPI_BUS         MPU6000_SPI_BUS
 
-  #define USE_GYRO_MPU6500
-  #define GYRO_MPU6500_ALIGN      GYRO_MPU6000_ALIGN
+#define USE_GYRO_MPU6500
+#define GYRO_MPU6500_ALIGN      GYRO_MPU6000_ALIGN
 
-  #define USE_ACC_MPU6500
-  #define ACC_MPU6500_ALIGN       ACC_MPU6000_ALIGN
-#endif
+#define USE_ACC_MPU6500
+#define ACC_MPU6500_ALIGN       ACC_MPU6000_ALIGN
 
 #define USE_MAG
 #define MAG_I2C_BUS             BUS_I2C1
@@ -98,21 +74,15 @@
 
 #define USE_BARO
 
-#if defined(OMNIBUSF4PRO) || defined(OMNIBUSF4V3)
-  #define USE_BARO_BMP280
-  #define BMP280_SPI_BUS        BUS_SPI3
-  #define BMP280_CS_PIN         PB3 // v1
+#define USE_BARO_BMP280
+#define BMP280_SPI_BUS        BUS_SPI3
+#define BMP280_CS_PIN         PB3 // v1
 
   // Support external barometers
-  #define BARO_I2C_BUS          BUS_I2C2
-  #define USE_BARO_BMP085
-  #define USE_BARO_MS5611
-#else
-  #define BARO_I2C_BUS          BUS_I2C2
-  #define USE_BARO_BMP085
-  #define USE_BARO_BMP280
-  #define USE_BARO_MS5611
-#endif
+#define BARO_I2C_BUS          BUS_I2C2
+#define USE_BARO_BMP085
+#define USE_BARO_MS5611
+
 
 #define USE_PITOT_MS4525
 #define PITOT_I2C_BUS           BUS_I2C2
@@ -135,9 +105,9 @@
 #define UART1_RX_PIN            PA10
 #define UART1_TX_PIN            PA9
 #define UART1_AHB1_PERIPHERALS  RCC_AHB1Periph_DMA2
-#if !defined(OMNIBUSF4V3)
-#define INVERTER_PIN_UART1_RX PC0 // PC0 has never been used as inverter control on genuine OMNIBUS F4 variants, but leave it as is since some clones actually implement it.
-#endif
+//#if !defined(OMNIBUSF4V3)
+//#define INVERTER_PIN_UART1_RX PC0 // PC0 has never been used as inverter control on genuine OMNIBUS F4 variants, but leave it as is since some clones actually implement it.
+//#endif
 
 #define USE_UART3
 #define UART3_RX_PIN            PB11
@@ -146,43 +116,30 @@
 #define USE_UART6
 #define UART6_RX_PIN            PC7
 #define UART6_TX_PIN            PC6
-#if defined(OMNIBUSF4V3)
-  #define INVERTER_PIN_UART6_RX PC8
-  #define INVERTER_PIN_UART6_TX PC9
-#endif
 
-#if defined(OMNIBUSF4V3)
+#define INVERTER_PIN_UART6_RX PC8
+#define INVERTER_PIN_UART6_TX PC9
+
 #define USE_SOFTSERIAL1
 #define SOFTSERIAL_1_RX_PIN     PC6 //shared with UART6_TX
 #define SOFTSERIAL_1_TX_PIN     PC6 //shared with UART6_TX
 
 #define SERIAL_PORT_COUNT       5 //VCP, USART1, USART3, USART6, SOFTSERIAL1
-#else
-#define USE_SOFTSERIAL1
-#define SOFTSERIAL_1_RX_PIN     PC8
-#define SOFTSERIAL_1_TX_PIN     PC9
-
-#define SERIAL_PORT_COUNT       5 //VCP, USART1, USART3, USART6, SOFTSERIAL1
-#endif
 
 #define USE_SPI
 
 #define USE_SPI_DEVICE_1
 
-#if defined(OMNIBUSF4PRO) || defined(OMNIBUSF4V3)
-  #define USE_SPI_DEVICE_2
-  #define SPI2_NSS_PIN          PB12
-  #define SPI2_SCK_PIN          PB13
-  #define SPI2_MISO_PIN         PB14
-  #define SPI2_MOSI_PIN         PB15
-#endif
+#define USE_SPI_DEVICE_2
+#define SPI2_NSS_PIN          PB12
+#define SPI2_SCK_PIN          PB13
+#define SPI2_MISO_PIN         PB14
+#define SPI2_MOSI_PIN         PB15
 
 #define USE_SPI_DEVICE_3
-#if defined(OMNIBUSF4PRO) || defined(OMNIBUSF4V3)
-  #define SPI3_NSS_PIN          PA15
-#else
-  #define SPI3_NSS_PIN          PB3
-#endif
+
+#define SPI3_NSS_PIN          PA15
+
 #define SPI3_SCK_PIN            PC10
 #define SPI3_MISO_PIN           PC11
 #define SPI3_MOSI_PIN           PC12
@@ -192,7 +149,6 @@
 #define MAX7456_SPI_BUS         BUS_SPI3
 #define MAX7456_CS_PIN          PA15
 
-#if defined(OMNIBUSF4PRO) || defined(OMNIBUSF4V3)
  // #define ENABLE_BLACKBOX_LOGGING_ON_SDCARD_BY_DEFAULT
 
  // #define USE_SDCARD
@@ -207,23 +163,15 @@
  // #define SDCARD_DMA_CHANNEL_TX_COMPLETE_FLAG DMA_FLAG_TCIF4
 //  #define SDCARD_DMA_CLK                      RCC_AHB1Periph_DMA1
 //  #define SDCARD_DMA_CHANNEL                  DMA_Channel_0
-#else
-  #define ENABLE_BLACKBOX_LOGGING_ON_SPIFLASH_BY_DEFAULT
-  #define M25P16_CS_PIN           SPI3_NSS_PIN
-  #define M25P16_SPI_BUS          BUS_SPI3
-  #define USE_FLASHFS
-  #define USE_FLASH_M25P16
-#endif
+
 
 #define USE_ADC
 #define ADC_CHANNEL_1_PIN               PC1
 #define ADC_CHANNEL_2_PIN               PC2
 
-#ifdef DYSF4PRO
-    #define ADC_CHANNEL_3_PIN               PC3
-#else
-    #define ADC_CHANNEL_3_PIN               PA0
-#endif
+
+#define ADC_CHANNEL_3_PIN               PA0
+
 
 #define CURRENT_METER_ADC_CHANNEL       ADC_CHN_1
 #define VBAT_ADC_CHANNEL                ADC_CHN_2
@@ -232,7 +180,6 @@
 #define SENSORS_SET (SENSOR_ACC|SENSOR_MAG|SENSOR_BARO)
 
 #define USE_LED_STRIP
-#if (defined(OMNIBUSF4PRO) || defined(OMNIBUSF4V3)) && !defined(OMNIBUSF4PRO_LEDSTRIPM5)
 //#error
 //#   define WS2811_PIN                      PB6
 //#   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST0_HANDLER
@@ -242,12 +189,7 @@
 #   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST4_HANDLER
 #   define WS2811_DMA_STREAM               DMA1_Stream4
 #   define WS2811_DMA_CHANNEL              DMA_Channel_6
-#else
-#   define WS2811_PIN                      PA1
-#   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST4_HANDLER
-#   define WS2811_DMA_STREAM               DMA1_Stream4
-#   define WS2811_DMA_CHANNEL              DMA_Channel_6
-#endif
+
 
 #define DEFAULT_RX_TYPE         RX_TYPE_PPM
 #define DISABLE_RX_PWM_FEATURE
@@ -267,8 +209,8 @@
 #define TARGET_IO_PORTC         0xffff
 #define TARGET_IO_PORTD         0xffff
 
-#ifdef OMNIBUSF4PRO
-#define CURRENT_METER_SCALE   265
-#endif
+//#ifdef OMNIBUSF4PRO
+//#define CURRENT_METER_SCALE   265
+//#endif
 
 #define PCA9685_I2C_BUS         BUS_I2C2
