@@ -17,8 +17,8 @@
 
 #pragma once
 
-#define TARGET_BOARD_IDENTIFIER "OB43"
-#define USBD_PRODUCT_STRING     "Omnibus F4"
+#define TARGET_BOARD_IDENTIFIER "HAKRCMINI"
+#define USBD_PRODUCT_STRING     "HAKRC Mini F4"
 
 #define LED0                    PB5
 
@@ -27,7 +27,6 @@
 
 #define USE_I2C
 #define USE_I2C_DEVICE_1
-//#define I2C_DEVICE_1_SHARES_UART3
 #define I2C1_SCL PB6
 #define I2C1_SDA PB7
 
