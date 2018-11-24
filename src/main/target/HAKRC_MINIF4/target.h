@@ -17,7 +17,6 @@
 
 #pragma once
 
-
 #define TARGET_BOARD_IDENTIFIER "OB43"
 #define USBD_PRODUCT_STRING     "Omnibus F4"
 
@@ -105,9 +104,6 @@
 #define UART1_RX_PIN            PA10
 #define UART1_TX_PIN            PA9
 #define UART1_AHB1_PERIPHERALS  RCC_AHB1Periph_DMA2
-//#if !defined(OMNIBUSF4V3)
-//#define INVERTER_PIN_UART1_RX PC0 // PC0 has never been used as inverter control on genuine OMNIBUS F4 variants, but leave it as is since some clones actually implement it.
-//#endif
 
 #define USE_UART3
 #define UART3_RX_PIN            PB11
@@ -208,9 +204,5 @@
 #define TARGET_IO_PORTB         0xffff
 #define TARGET_IO_PORTC         0xffff
 #define TARGET_IO_PORTD         0xffff
-
-//#ifdef OMNIBUSF4PRO
-//#define CURRENT_METER_SCALE   265
-//#endif
 
 #define PCA9685_I2C_BUS         BUS_I2C2
