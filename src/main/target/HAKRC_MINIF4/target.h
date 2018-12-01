@@ -144,22 +144,6 @@
 #define MAX7456_SPI_BUS         BUS_SPI3
 #define MAX7456_CS_PIN          PA15
 
- // #define ENABLE_BLACKBOX_LOGGING_ON_SDCARD_BY_DEFAULT
-
- // #define USE_SDCARD
- // #define USE_SDCARD_SPI2
-
- // #define SDCARD_DETECT_INVERTED
-//  #define SDCARD_DETECT_PIN               PB7
- // #define SDCARD_SPI_INSTANCE             SPI2
- // #define SDCARD_SPI_CS_PIN               SPI2_NSS_PIN
-
- // #define SDCARD_DMA_CHANNEL_TX               DMA1_Stream4
- // #define SDCARD_DMA_CHANNEL_TX_COMPLETE_FLAG DMA_FLAG_TCIF4
-//  #define SDCARD_DMA_CLK                      RCC_AHB1Periph_DMA1
-//  #define SDCARD_DMA_CHANNEL                  DMA_Channel_0
-
-
 #define USE_ADC
 #define ADC_CHANNEL_1_PIN               PC1
 #define ADC_CHANNEL_2_PIN               PC2
