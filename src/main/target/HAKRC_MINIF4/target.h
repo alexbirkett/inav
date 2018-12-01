@@ -101,7 +101,7 @@
 
 #define USE_UART1
 #define UART1_RX_PIN            PA10
-#define UART1_TX_PIN            PA9
+#define UART1_TX_PIN            PA11 // Not connected to anything
 #define UART1_AHB1_PERIPHERALS  RCC_AHB1Periph_DMA2
 
 #define USE_UART3
@@ -164,7 +164,7 @@
 //#   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST0_HANDLER
 //#   define WS2811_DMA_STREAM               DMA1_Stream0
 //#   define WS2811_DMA_CHANNEL              DMA_Channel_2
-#   define WS2811_PIN                      PA1
+#   define WS2811_PIN                      PA9
 #   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST4_HANDLER
 #   define WS2811_DMA_STREAM               DMA1_Stream4
 #   define WS2811_DMA_CHANNEL              DMA_Channel_6
