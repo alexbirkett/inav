@@ -159,16 +159,11 @@
 #define SENSORS_SET (SENSOR_ACC|SENSOR_MAG|SENSOR_BARO)
 
 #define USE_LED_STRIP
-//#error
-//#   define WS2811_PIN                      PB6
-//#   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST0_HANDLER
-//#   define WS2811_DMA_STREAM               DMA1_Stream0
-//#   define WS2811_DMA_CHANNEL              DMA_Channel_2
-#   define WS2811_PIN                      PA9
-#   define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST4_HANDLER
-#   define WS2811_DMA_STREAM               DMA1_Stream4
-#   define WS2811_DMA_CHANNEL              DMA_Channel_6
-
+#define WS2811_GPIO_AF                  GPIO_AF_TIM1
+#define WS2811_PIN                      PA9
+#define WS2811_DMA_HANDLER_IDENTIFER    DMA1_ST4_HANDLER
+#define WS2811_DMA_STREAM               DMA1_Stream4
+#define WS2811_DMA_CHANNEL              DMA_Channel_6
 
 #define DEFAULT_RX_TYPE         RX_TYPE_PPM
 #define DISABLE_RX_PWM_FEATURE
